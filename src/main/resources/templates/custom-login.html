@@ -1,0 +1,299 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Custom Login</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background-color: #f7f9fc;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .login-container {-->
+<!--            background-color: #fff;-->
+<!--            padding: 40px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);-->
+<!--            width: 350px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        h2 {-->
+<!--            margin-bottom: 20px;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .login-form {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .login-form input {-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 15px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .login-form button {-->
+<!--            padding: 10px;-->
+<!--            background-color: #007bff;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            font-size: 16px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .login-form button:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+
+<!--        .social-login {-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .google-btn {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            padding: 10px;-->
+<!--            background-color: white;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: pointer;-->
+<!--            transition: background-color 0.3s ease;-->
+<!--        }-->
+
+<!--        .google-btn img {-->
+<!--            width: 27px;-->
+<!--            margin-right: 12px;-->
+<!--        }-->
+
+<!--        .google-btn:hover {-->
+<!--            background-color: #f1f1f1;-->
+<!--        }-->
+
+<!--        .google-btn span {-->
+<!--            font-size: 16px;-->
+<!--            color: #555;-->
+<!--        }-->
+
+<!--        .or-divider {-->
+<!--            margin: 20px 0;-->
+<!--            position: relative;-->
+<!--            text-align: center;-->
+<!--            color: #999;-->
+<!--        }-->
+
+<!--        .or-divider:before,-->
+<!--        .or-divider:after {-->
+<!--            content: "";-->
+<!--            position: absolute;-->
+<!--            top: 50%;-->
+<!--            width: 40%;-->
+<!--            height: 1px;-->
+<!--            background-color: #ddd;-->
+<!--        }-->
+
+<!--        .or-divider:before {-->
+<!--            left: 0;-->
+<!--        }-->
+
+<!--        .or-divider:after {-->
+<!--            right: 0;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="login-container">-->
+<!--    <h2>Sign In</h2>-->
+<!--    &lt;!&ndash; Regular Login Form &ndash;&gt;-->
+<!--    <form th:action="@{/login}" method="POST" class="login-form">-->
+<!--        <input type="text" name="username" placeholder="Username" required>-->
+<!--        <input type="password" name="password" placeholder="Password" required>-->
+<!--        <button type="submit">Sign In</button>-->
+<!--    </form>-->
+
+<!--    &lt;!&ndash; "OR" Divider &ndash;&gt;-->
+<!--    <div class="or-divider">OR</div>-->
+
+<!--    &lt;!&ndash; Google Login Button &ndash;&gt;-->
+<!--    <div class="social-login">-->
+<!--        <a th:href="@{/oauth2/authorization/google}" class="google-btn">-->
+<!--            <img src="https://banner2.cleanpng.com/20180610/jeu/aa8r2y6ex.webp" alt="Google Logo">-->
+<!--            <span>Sign In with Google</span>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            max-width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .login-container:hover {
+            transform: translateY(-10px);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-form input {
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .login-form input:focus {
+            border-color: #ff7e5f;
+        }
+
+        .login-form button {
+            padding: 12px;
+            background-color: #ff7e5f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .login-form button:hover {
+            background-color: #e56649;
+        }
+
+        .social-login {
+            margin-top: 25px;
+        }
+
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background-color: #4285F4;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .google-btn img {
+            width: 24px;
+            margin-right: 12px;
+        }
+
+        .google-btn:hover {
+            background-color: #357ae8;
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background-color: #ddd;
+            margin: 0 10px;
+        }
+
+        .sign-up {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .sign-up a {
+            color: #ff7e5f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .sign-up a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Welcome</h2>
+    <form th:action="@{/login}" method="POST" class="login-form">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Sign In</button>
+    </form>
+
+    <div class="or-divider">OR</div>
+
+    <!-- Google Login Button -->
+    <div class="social-login">
+        <a th:href="@{/oauth2/authorization/google}" class="google-btn">
+            <img src="https://banner2.cleanpng.com/20180610/jeu/aa8r2y6ex.webp" alt="Google Logo">
+            <span>Sign In with Google</span>
+        </a>
+    </div>
+
+    <!-- Sign Up Link -->
+    <div class="sign-up">
+        Don't have an account? <a href="/register">Sign Up</a>
+    </div>
+</div>
+
+</body>
+</html>
